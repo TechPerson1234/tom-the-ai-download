@@ -620,7 +620,7 @@
             <p>One intelligence, seven characters. Click to explore.</p>
         </div>
         <div class="product-grid">
-            <!-- LITE CARD (added) -->
+            
             <div class="product-card" style="border: 1px solid #cfe3ff; background: #ffffff;">
                 <div class="card-icon"><i class="fas fa-feather-alt"></i></div>
                 <h3>Tom The AI Lite <span class="product-tag" style="background:#e2f0e6; color:#0f766e;">⚡ always on</span></h3>
@@ -730,7 +730,7 @@
                 <a href="premium.html" target="_blank" class="btn btn-primary" style="margin-top: 20px; text-align: center;">BUILDING RIGHT NOW · learn more →</a>
             </div>
 
-            <!-- ULTRA VERSION - newly added card -->
+         
             <div class="product-card" style="border: 2px solid #d4af37; background: radial-gradient(ellipse at top, #fff9e8, #ffffff);">
                 <div class="card-icon"><i class="fas fa-gem" style="color: #d4af37;"></i></div>
                 <h3>Tom The AI Ultra <span class="product-tag" style="background: #d4af37; color: #2c1e0e; font-weight:700;">Ultimate</span></h3>
@@ -760,10 +760,10 @@
                 <div style="margin-top: 16px;">
                     <span class="discord-vote-badge" style="background:#b8860b;"><i class="fab fa-discord"></i> Ultra voting · shape the roadmap</span>
                 </div>
-                <a href="ultra.html" target="_blank" class="btn btn-primary" style="margin-top: 20px; text-align: center; background: #b8860b; border:none;">Get Ultra Prestige →</a>
+                <a href="ultra.html" target="_blank" class="btn btn-primary" style="margin-top: 20px; text-align: center; background: #b8860b; border:none;">Learn More →</a>
             </div>
           
-            <!-- BUSINESS VERSION (solo entrepreneur) -->
+    
             <div class="product-card" style="border: 2px solid #2c5f8a; background: #f6fafe;">
                 <div class="card-icon"><i class="fas fa-user-tie" style="color: #1e4a6e;"></i></div>
                 <h3>Tom The AI Business <span class="product-tag" style="background:#1e4a6e; color:white;">Solo Entrepreneur</span></h3>
@@ -776,7 +776,7 @@
                     <li><i class="fas fa-check-circle"></i> Custom branding & invoice generation</li>
                     <li><i class="fas fa-check-circle"></i> Priority email support (24h response)</li>
                 </ul>
-                <a href="mailto:wen471942@gmail.com?subject=Business%20plan%20inquiry" class="btn btn-primary" style="background: #1e4a6e;">Start Business →</a>
+                <a href="mailto:wen471942@gmail.com?subject=Business%20plan%20inquiry" class="btn btn-primary" style="background: #1e4a6e;"> Learn More - Business</a>
             </div>
 
             <div class="product-card">
@@ -814,7 +814,7 @@
                         <tr><td>Stability (break chance)</td><td>2%</td><td>40%</td><td>60%</td><td>30%/15%</td><td>0% SLA backed</td><td><1% (99% uptime)</td><td>SLA 99.9%</td></tr>
                         <tr><td>Personas</td><td>None</td><td>Team-made</td><td>User-made</td><td>Unlimited</td><td>Unlimited + custom voice/fine-tune</td><td>Team shared library</td><td>Shared library</td></tr>
                     </tbody>
-                 </table>
+                  </table>
             </div>
         </div>
     </section>
@@ -845,7 +845,7 @@
         </div>
         <div class="timeline">
             <div class="milestone">
-                <div class="date">June 2026</div>
+                <div class="date">July 2026</div>
                 <h4>Premium Launch</h4>
                 <p>Weekly & credit plans available. Full access and more media generation.</p>
             </div>
@@ -861,8 +861,13 @@
             </div>
             <div class="milestone">
                 <div class="date">November 2027</div>
-                <h4>Enterprise Launch</h4>
+                <h4>Business Launch</h4>
                 <p>Experience the Best of Tom The AI with 1000+ models and Get the Best Business Site for AI </p>
+            </div>
+            <div class="milestone">
+                <div class="date">February 2028</div>
+                <h4>Enterprise Launch</h4>
+                <p>Experience the Best of Tom The AI with umlinted models and Get the MAX Team Business Site for AI </p>
             </div>
         </div>
     </section>
@@ -1005,12 +1010,33 @@
     </div>
 </div>
 
-
 <div class="modal" id="cookiesModal">
     <div class="modal-content">
         <span class="modal-close">&times;</span>
         <h2>Cookie Preferences</h2>
         <p>We use essential cookies to keep the service running. No tracking cookies are used on this site.</p>
+    </div>
+</div>
+
+<!-- ACCESSIBILITY MODAL - custom box just like the others -->
+<div class="modal" id="accessibilityModal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2>Accessibility Statement</h2>
+        <p><strong>Commitment to inclusivity · updated April 2026</strong></p>
+        <p>Tom The AI strives to make our platform accessible to everyone, regardless of ability or technology. We actively follow WCAG 2.1 AA guidelines and continue improving.</p>
+        <h3>Features we support</h3>
+        <p>✅ Keyboard navigable interface & semantic HTML<br>
+        ✅ Screen reader friendly (ARIA labels, high contrast modes)<br>
+        ✅ Focus indicators for interactive elements<br>
+        ✅ Scalable text up to 200% without breaking layout<br>
+        ✅ Voice control compatibility (macOS, Windows, mobile)<br>
+        ✅ Alternative text for icons and non-text elements</p>
+        <h3>Ongoing improvements</h3>
+        <p>We regularly audit components, test with assistive technologies, and welcome feedback. Some experimental AI tools (media generation) are continuously enhanced for accessibility.</p>
+        <h3>Need help?</h3>
+        <p>If you experience any barrier while using Tom AI, please email <strong>wen471942@gmail.com</strong> or reach out on Discord. We respond within 2 business days and will work to resolve accessibility issues promptly.</p>
+        <p style="margin-top: 16px; font-style: italic;">“seven beautiful minds – accessible to all.”</p>
     </div>
 </div>
 
@@ -1028,6 +1054,7 @@
         
         function setupModal(modalId, triggerIds) {
             const modal = document.getElementById(modalId);
+            if (!modal) return;
             const closeBtn = modal.querySelector('.modal-close');
             function openModal(e) { e.preventDefault(); modal.classList.add('active'); }
             function closeModal() { modal.classList.remove('active'); }
@@ -1035,31 +1062,28 @@
                 const el = document.getElementById(id);
                 if (el) el.addEventListener('click', openModal);
             });
-            closeBtn.addEventListener('click', closeModal);
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
         }
 
         setupModal('termsModal', ['termsLink', 'termsFooter']);
         setupModal('privacyModal', ['privacyLink', 'privacyFooter']);
         setupModal('cookiesModal', ['cookiesLink']);
-
-    
-        document.getElementById('accessibilityLink')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Accessibility statement: We strive to meet WCAG 2.1 AA standards. Contact us for assistance.');
-        });
+        // Accessibility Modal - now a custom box just like terms & privacy
+        setupModal('accessibilityModal', ['accessibilityLink']);
 
         
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === "#" || href === "") return;
-                const target = document.querySelector(href);
-                if (target) {
+            const href = anchor.getAttribute('href');
+            if (href === "#" || href === "") return;
+            // skip modal-only ids? no conflict, fine.
+            const target = document.querySelector(href);
+            if (target && !anchor.closest('.modal-content')) {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+                });
+            }
         });
     })();
 </script>
