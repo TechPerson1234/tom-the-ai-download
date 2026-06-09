@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom The AI Free Portal | math12393</title>
+    <meta name="description" content="Tom The AI: Codeberg hosted, custom personas, image analysis, local history memory, dark & galaxy themes, limited media generation, basic AI coder, free and community-shared.">
+    <meta name="theme-color" content="#0d1117">
+    <meta property="og:title" content="Tom The AI - Free AI Assistant">
+    <meta property="og:description" content="Explore Tom The AI, a free AI assistant with custom personas, image analysis, local memory, dark & galaxy themes, and applications for all platforms.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://math12393.codeberg.page/TOM-The-AI-Wen/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%236e56cf'/%3E%3Ctext x='50' y='65' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3ET%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --border-color: #30363d;
+            --accent: #6e56cf;
+            --accent-light: #8b5cf6;
+            --accent-glow: rgba(110, 86, 207, 0.45);
+            --success: #3fb950;
+            --warning: #d2991d;
+            --danger: #f85149;
+            --info: #58a6ff;
+            --card-bg: #161b22;
+            --card-border: #21262d;
+            --btn-bg: #21262d;
+            --btn-hover-bg: #30363d;
+            --header-bg: rgba(13, 17, 23, 0.85);
+            --shadow: 0 8px 30px rgba(0,0,0,0.5);
+            --star-opacity: 0.3;
+            --nebula-opacity: 0.12;
+            --overlay-bg: rgba(0,0,0,0.7);
+            --tag-bg: #1c2128;
+            --divider: #21262d;
+            --nav-bg: #0d1117;
+        }
+        .galaxy-theme {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #0f0f2a;
+            --bg-tertiary: #151535;
+            --text-primary: #e8e8ff;
+            --text-secondary: #a0a0c0;
+            --text-muted: #7070a0;
+            --border-color: #2a2a50;
+            --accent: #7c3aed;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(124, 58, 237, 0.55);
+            --success: #34d399;
+            --warning: #fbbf24;
+            --danger: #f87171;
+            --info: #60a5fa;
+            --card-bg: #0f0f2a;
+            --card-border: #1e1e4a;
+            --btn-bg: #151535;
+            --btn-hover-bg: #1e1e4a;
+            --header-bg: rgba(10, 10, 26, 0.85);
+            --shadow: 0 8px 30px rgba(0,0,0,0.7);
+            --star-opacity: 0.7;
+            --nebula-opacity: 0.25;
+            --overlay-bg: rgba(5,5,20,0.8);
+            --tag-bg: #12122a;
+            --divider: #151535;
+            --nav-bg: #0a0a1a;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; font-size:16px; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height:100vh;
+            line-height:1.6;
+            overflow-x:hidden;
+            transition: background-color 0.4s, color 0.4s;
+            -webkit-font-smoothing: antialiased;
+            display:flex;
+            flex-direction:column;
+        }
+        .galaxy-theme body {
+            background: radial-gradient(ellipse at 30% 20%, #1a1a4a 0%, #0a0a1a 70%, #050520 100%);
+            background-attachment:fixed;
+        }
+        .starry-sky {
+            position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;
+            opacity: var(--star-opacity); transition: opacity 0.5s;
+        }
+        .star {
+            position:absolute; background:white; border-radius:50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+        @keyframes twinkle {
+            0%,100% { opacity:0.15; transform:scale(1); }
+            50% { opacity:0.9; transform:scale(2.2); }
+        }
+        .nebula {
+            position:absolute; border-radius:50%; filter:blur(80px);
+            opacity: var(--nebula-opacity);
+            animation: drift 22s ease-in-out infinite;
+        }
+        @keyframes drift {
+            0%,100% { transform:translate(0,0) scale(1); }
+            25% { transform:translate(40px,-25px) scale(1.15); }
+            50% { transform:translate(-20px,30px) scale(0.9); }
+            75% { transform:translate(-35px,-18px) scale(1.05); }
+        }
+        .wrapper {
+            position:relative; z-index:1; display:flex; flex-direction:column; min-height:100vh;
+        }
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom:1px solid var(--border-color);
+            padding:10px 24px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            gap:16px;
+            position:sticky;
+            top:0;
+            z-index:20;
+        }
+        .logo-area {
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+        .logo-icon {
+            width:44px; height:44px; border-radius:50%;
+            background:linear-gradient(135deg, var(--accent), var(--accent-light));
+            display:flex; align-items:center; justify-content:center;
+            font-weight:900; font-size:22px; color:#fff;
+            box-shadow:0 0 20px var(--accent-glow);
+            animation: logoPulse 3s infinite;
+        }
+        @keyframes logoPulse {
+            0%,100% { box-shadow:0 0 20px var(--accent-glow); }
+            50% { box-shadow:0 0 35px var(--accent-glow), 0 0 50px rgba(139,92,246,0.3); }
+        }
+        .logo-text h1 { font-size:1.2rem; font-weight:700; letter-spacing:-0.02em; margin:0; }
+        .logo-text span { font-size:0.7rem; color:var(--text-muted); }
+        .header-actions {
+            display:flex;
+            gap:8px;
+            align-items:center;
+        }
+        .btn {
+            padding:8px 16px;
+            border-radius:8px;
+            border:1px solid var(--border-color);
+            background:var(--btn-bg);
+            color:var(--text-primary);
+            cursor:pointer;
+            font-size:0.8rem;
+            font-weight:500;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:5px;
+            transition: all 0.2s;
+            white-space:nowrap;
+            font-family:inherit;
+        }
+        .btn:hover {
+            background:var(--btn-hover-bg);
+            border-color:var(--text-muted);
+            transform:translateY(-2px);
+            box-shadow:0 6px 16px rgba(0,0,0,0.4);
+        }
+        .btn-accent {
+            background:var(--accent);
+            border-color:var(--accent);
+            color:#fff;
+            font-weight:600;
+        }
+        .btn-accent:hover {
+            background:var(--accent-light);
+            border-color:var(--accent-light);
+            box-shadow:0 0 24px var(--accent-glow);
+        }
+        .btn-lg {
+            padding:14px 32px;
+            font-size:1rem;
+            border-radius:12px;
+        }
+        .badge {
+            display:inline-block;
+            padding:4px 10px;
+            border-radius:12px;
+            font-size:0.7rem;
+            font-weight:600;
+            background:var(--tag-bg);
+            border:1px solid var(--border-color);
+            white-space:nowrap;
+        }
+        .badge-free { background:#1a3a2a; border-color:#2d5a3d; color:#3fb950; }
+        .badge-breaking { background:#2a1a0a; border-color:#5a3d1a; color:#d2991d; display:inline-flex; align-items:center; gap:4px; }
+        .breaking-dot { width:8px; height:8px; border-radius:50%; background:var(--warning); animation: breakBlink 0.9s infinite; }
+        @keyframes breakBlink { 0%,100% { opacity:1; } 50% { opacity:0.15; } }
+        nav {
+            background: var(--nav-bg);
+            border-bottom:1px solid var(--border-color);
+            padding:8px 24px;
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+            align-items:center;
+            justify-content:center;
+            position:sticky;
+            top:60px;
+            z-index:19;
+        }
+        nav a {
+            color: var(--text-secondary);
+            text-decoration:none;
+            font-size:0.8rem;
+            padding:6px 14px;
+            border-radius:6px;
+            transition: all 0.2s;
+            font-weight:500;
+        }
+        nav a:hover { color: var(--text-primary); background: var(--btn-bg); }
+        main {
+            flex:1;
+            display:flex;
+            flex-direction:column;
+        }
+        section {
+            padding:60px 24px;
+            max-width:1200px;
+            margin:0 auto;
+            width:100%;
+        }
+        .hero {
+            text-align:center;
+            padding:90px 20px 70px;
+        }
+        .hero h2 {
+            font-size:2.8rem;
+            font-weight:800;
+            letter-spacing:-0.04em;
+            margin-bottom:16px;
+            background:linear-gradient(135deg, var(--text-primary), var(--accent-light));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+        .hero p {
+            font-size:1.2rem;
+            color:var(--text-secondary);
+            max-width:700px;
+            margin:0 auto 32px;
+        }
+        .hero .main-site-btn {
+            margin:20px 0 10px;
+        }
+        .section-title {
+            font-size:2rem;
+            font-weight:700;
+            text-align:center;
+            margin-bottom:12px;
+            letter-spacing:-0.03em;
+        }
+        .section-subtitle {
+            text-align:center;
+            color:var(--text-secondary);
+            margin-bottom:40px;
+            font-size:1rem;
+        }
+        .feature-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+            gap:20px;
+            margin-top:30px;
+        }
+        .feature-card {
+            background:var(--card-bg);
+            border:1px solid var(--card-border);
+            border-radius:14px;
+            padding:24px 18px;
+            transition: all 0.25s;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+        .feature-card:hover {
+            border-color:var(--accent);
+            box-shadow:0 10px 25px var(--shadow);
+            transform:translateY(-4px);
+        }
+        .feature-icon { font-size:2rem; }
+        .feature-card h3 { font-size:1rem; font-weight:600; margin:0; }
+        .feature-card p { font-size:0.8rem; color:var(--text-secondary); margin:0; line-height:1.5; }
+        .download-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+            gap:18px;
+            margin-top:24px;
+        }
+        .download-card {
+            background:var(--card-bg);
+            border:1px solid var(--card-border);
+            border-radius:14px;
+            padding:28px 16px 20px;
+            text-align:center;
+            text-decoration:none;
+            color:var(--text-primary);
+            transition: all 0.25s;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
+        }
+        .download-card:hover {
+            border-color:var(--accent);
+            box-shadow:0 12px 28px var(--shadow);
+            transform:translateY(-4px);
+            background:var(--btn-hover-bg);
+        }
+        .download-icon { font-size:2.6rem; }
+        .download-card span:last-child { font-size:0.7rem; color:var(--text-muted); }
+        .steps-container {
+            display:flex;
+            flex-direction:column;
+            gap:30px;
+            margin-top:30px;
+            counter-reset:step;
+        }
+        .step {
+            display:flex;
+            gap:20px;
+            align-items:flex-start;
+        }
+        .step-number {
+            flex-shrink:0;
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            background:var(--accent);
+            color:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:700;
+            font-size:1.1rem;
+        }
+        .step-content h3 { margin-bottom:4px; font-size:1.1rem; }
+        .step-content p { color:var(--text-secondary); font-size:0.9rem; }
+        .faq-item {
+            border-bottom:1px solid var(--divider);
+            padding:18px 0;
+        }
+        .faq-question {
+            font-weight:600;
+            font-size:1rem;
+            cursor:default;
+            margin-bottom:8px;
+        }
+        .faq-answer {
+            color:var(--text-secondary);
+            font-size:0.9rem;
+        }
+        .divider {
+            border:none;
+            border-top:1px solid var(--divider);
+            margin:32px 0;
+        }
+        footer {
+            background:var(--bg-secondary);
+            border-top:1px solid var(--border-color);
+            padding:28px 24px;
+            text-align:center;
+            font-size:0.8rem;
+            color:var(--text-muted);
+            margin-top:40px;
+        }
+        footer a { color:var(--info); text-decoration:none; }
+        .text-center { text-align:center; }
+        @media (max-width:768px) {
+            .hero h2 { font-size:2rem; }
+            .feature-grid { grid-template-columns:1fr; }
+            .download-grid { grid-template-columns:1fr 1fr; }
+            section { padding:40px 16px; }
+            nav { top:56px; }
+        }
+        @media (max-width:480px) {
+            .download-grid { grid-template-columns:1fr; }
+            header { padding:10px 16px; }
+            .step { flex-direction:column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="starry-sky" id="starrySky"></div>
+    <div class="wrapper">
+        <header>
+            <div class="logo-area">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">
+                    <h1>Tom The AI</h1>
+                    <span>Free AI Assistant</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <span class="badge badge-free">FREE</span>
+                <span class="badge badge-breaking"><span class="breaking-dot"></span> ~30% break chance</span>
+                <button class="btn" id="themeToggle" onclick="toggleTheme()">🌓 Theme</button>
+            </div>
+        </header>
+        <nav>
+            <a href="#main-site">Main Site</a>
+            <a href="#features">Features</a>
+            <a href="#how-to-use">How to Use</a>
+            <a href="#downloads">Downloads</a>
+            <a href="#faq">FAQ</a>
+            <a href="#community">Community</a>
+        </nav>
+        <main>
+            <section class="hero" id="main-site">
+                <h2>Your Free AI Companion Starts Here</h2>
+                <p>Tom The AI is a powerful, community-shared assistant with custom personas, image analysis, local memory, and native apps for every platform. No ads. Completely free.</p>
+                <a href="https://math12393.codeberg.page/TOM-The-AI-Wen/" target="_blank" rel="noopener" class="btn btn-accent btn-lg main-site-btn">🌐 Visit Tom The AI Main Website</a>
+                <p style="font-size:0.8rem; margin-top:10px;">or scroll down to explore everything</p>
+            </section>
+            <section id="features">
+                <h2 class="section-title">Full Feature List</h2>
+                <p class="section-subtitle">Everything Tom The AI offers, straight from the team</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Custom Personas by Team</h3>
+                        <p>Switch between tailored AI personalities: Coder, Researcher, Creative, Analyst, and more.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🖼️</div>
+                        <h3>Basic Image Analysis</h3>
+                        <p>Upload or describe images to get structured visual insights and object recognition.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Local History Memory</h3>
+                        <p>Conversations are stored on your device to keep context across sessions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌌</div>
+                        <h3>Dark & Galaxy Themes</h3>
+                        <p>Choose between a sleek dark mode or an immersive galaxy-inspired interface.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Limited Media Generation</h3>
+                        <p>Create basic visual and text-based creative content on demand.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>Basic AI Coder</h3>
+                        <p>Get code snippets, debugging help, and programming guidance in multiple languages.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔬</div>
+                        <h3>Basic AI Research</h3>
+                        <p>Summarize topics, compare ideas, and synthesize information from general knowledge.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast AI Outputs for Text</h3>
+                        <p>Optimized for speedy text responses, so you spend less time waiting.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Multi-Platform Apps</h3>
+                        <p>Dedicated applications for iOS, Android, Windows, macOS, and Linux.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Some Data Collected</h3>
+                        <p>Minimal, anonymous data used only to improve your experience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Closed Source</h3>
+                        <p>Core code is private, but the community freely shares and distributes the AI.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Codeberg Page Websites</h3>
+                        <p>All web properties and downloads are hosted openly on Codeberg Pages.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="how-to-use">
+                <h2 class="section-title">How to Use Tom The AI (Beginner's Guide)</h2>
+                <p class="section-subtitle">Follow these simple steps to get started with Tom</p>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Visit the Main Website</h3>
+                            <p>Click the big <strong>"Visit Tom The AI Main Website"</strong> button above or go directly to <a href="https://math12393.codeberg.page/TOM-The-AI-Wen/" target="_blank" rel="noopener">math12393.codeberg.page/TOM-The-AI-Wen/</a>. That's where the AI chat lives.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Choose a Persona</h3>
+                            <p>Once on the main site, you'll see a sidebar or chips to select a persona like "Coder" or "Researcher". Pick the one that fits your task. The AI adapts its style and knowledge accordingly.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Start Chatting</h3>
+                            <p>Type your message in the input box and press Enter. Tom will respond quickly. You can ask for code, analysis, creative ideas, or just have a friendly conversation.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Explore Themes & Memory</h3>
+                            <p>Toggle between Dark and Galaxy themes with the button in the top bar. Your chat history is saved locally in your browser, so you can pick up where you left off.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Download a Native App (Optional)</h3>
+                            <p>If you prefer a dedicated app, scroll down to the Downloads section here or on the main site. Get the IPA for iOS, APK for Android, EXE for Windows, DMG for macOS, or AppImage for Linux.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="downloads">
+                <h2 class="section-title">Download Tom The AI Applications</h2>
+                <p class="section-subtitle">Native experiences for every device. All free, no ads.</p>
+                <div class="download-grid">
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-Mobile-configurations-Wen/free-config.html/" target="_blank" rel="noopener">
+                        <div class="download-icon">📱</div>
+                        <strong>iOS Config</strong>
+                        <span>Mobile Configuration Bookmark</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-IPA-Wen/ipa-free.html" target="_blank" rel="noopener">
+                        <div class="download-icon">🍎</div>
+                        <strong>iOS IPA</strong>
+                        <span>iPhone / iPad App</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-APK-Wen/apk-free.html" target="_blank" rel="noopener">
+                        <div class="download-icon">🤖</div>
+                        <strong>Android APK</strong>
+                        <span>Android App</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-EXE-Wen/exe-free.html" target="_blank" rel="noopener">
+                        <div class="download-icon">🖥️</div>
+                        <strong>Windows EXE</strong>
+                        <span>Desktop Application</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-DMG-Wen/dmg-free.html" target="_blank" rel="noopener">
+                        <div class="download-icon">🍏</div>
+                        <strong>macOS DMG</strong>
+                        <span>Mac Desktop</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-APPIMAGE-Wen/appimage-free.html" target="_blank" rel="noopener">
+                        <div class="download-icon">🐧</div>
+                        <strong>Linux AppImage</strong>
+                        <span>Linux Desktop</span>
+                    </a>
+                </div>
+                <p class="text-center" style="margin-top:24px; font-size:0.85rem; color:var(--text-secondary);">
+                    Limited mobile support for iOS/Safari. All files hosted on Codeberg Pages.
+                </p>
+            </section>
+            <section id="faq">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Is Tom The AI really free?</div>
+                    <div class="faq-answer">Yes, completely free. There are no ads, no subscriptions, and no hidden costs. It is community-shared and hosted on Codeberg.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What does "~30% chance of breaking" mean?</div>
+                    <div class="faq-answer">Tom is a work in progress. About 30% of the time, especially on very complex or unusual requests, it might return an error or an unhelpful response. This is a known quirk and the team is always working to improve reliability.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I switch between Dark and Galaxy themes?</div>
+                    <div class="faq-answer">Use the "Theme" button in the top bar of the main website, or the toggle on this portal page. Your choice is saved in your browser.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Does Tom collect my personal data?</div>
+                    <div class="faq-answer">Only minimal, anonymous usage data is collected to help improve the AI. No personal conversations are stored on external servers. Local history is kept only on your device.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between the web version and the native apps?</div>
+                    <div class="faq-answer">The native apps (IPA, APK, EXE, DMG, AppImage) provide a dedicated, installable experience on each platform, often with better integration and offline caching. The core AI features remain the same.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use Tom on my iPhone?</div>
+                    <div class="faq-answer">Yes. There is an iOS IPA and a mobile configuration profile that adds a bookmark to your home screen. However, support for iOS/Safari may be limited compared to other platforms.</div>
+                </div>
+            </section>
+            <section id="community">
+                <h2 class="section-title">Community & Transparency</h2>
+                <p class="section-subtitle">Built for the people, shared by the people</p>
+                <div style="max-width:700px; margin:0 auto;">
+                    <p>Tom The AI is not a corporate product. It is a <strong>closed-source</strong> project that is <strong>shared freely</strong> with the community. The team behind Tom believes in accessibility — no ads, no paywalls, no tracking beyond basic improvement metrics.</p>
+                    <p style="margin-top:16px;">All applications and the main website are hosted on <strong>Codeberg</strong>, a European open-source code hosting platform, ensuring transparency and reliability. The AI uses basic memory and research capabilities, and while it's not perfect (with that ~30% break rate), it's constantly evolving thanks to user feedback.</p>
+                    <div class="divider"></div>
+                    <p><strong>Tom The AI at a glance:</strong></p>
+                    <ul style="list-style:none; display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+                        <li class="badge">Codeberg Hosted</li>
+                        <li class="badge badge-free">No Ads</li>
+                        <li class="badge">Closed Source</li>
+                        <li class="badge">Shared by Community</li>
+                        <li class="badge">Basic AI Coder</li>
+                        <li class="badge">Basic AI Research</li>
+                        <li class="badge">Local History Memory</li>
+                        <li class="badge">Dark & Galaxy Themes</li>
+                    </ul>
+                </div>
+            </section>
+            <div class="divider"></div>
+            <section class="text-center">
+                <p style="font-size:1.3rem; font-weight:600;">Ready to meet Tom?</p>
+                <a href="https://math12393.codeberg.page/TOM-The-AI-Wen/" target="_blank" rel="noopener" class="btn btn-accent btn-lg" style="margin-top:12px;">🌐 Launch Main Website</a>
+            </section>
+        </main>
+        <footer>
+            <p><strong>Tom The AI</strong> · Free AI Assistant · <span class="badge badge-free" style="margin-left:6px;">FREE OF USE</span></p>
+            <p style="margin-top:8px;">Hosted on <a href="https://codeberg.org/" target="_blank" rel="noopener">Codeberg</a> · No Ads · Community Shared</p>
+        </footer>
+    </div>
+    <script>
+        (function() {
+            const sky = document.getElementById('starrySky');
+            for (let i=0; i<140; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const s = Math.random()*2.2+0.7;
+                star.style.width = s+'px';
+                star.style.height = s+'px';
+                star.style.left = Math.random()*100+'%';
+                star.style.top = Math.random()*100+'%';
+                star.style.setProperty('--duration', (Math.random()*5+2.5)+'s');
+                star.style.setProperty('--delay', (Math.random()*6)+'s');
+                sky.appendChild(star);
+            }
+            const colors = ['#6e56cf','#8b5cf6','#3b82f6','#a78bfa','#7c3aed','#60a5fa'];
+            for (let i=0; i<7; i++) {
+                const neb = document.createElement('div');
+                neb.className = 'nebula';
+                neb.style.width = (Math.random()*300+160)+'px';
+                neb.style.height = (Math.random()*300+160)+'px';
+                neb.style.left = (Math.random()*85)+'%';
+                neb.style.top = (Math.random()*85)+'%';
+                neb.style.background = colors[Math.floor(Math.random()*colors.length)];
+                neb.style.animationDelay = (Math.random()*12)+'s';
+                neb.style.animationDuration = (Math.random()*25+18)+'s';
+                sky.appendChild(neb);
+            }
+        })();
+        let currentTheme = 'dark';
+        function toggleTheme() {
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.add('galaxy-theme');
+                currentTheme = 'galaxy';
+                document.getElementById('themeToggle').textContent = '🌙 Galaxy';
+            } else {
+                document.documentElement.classList.remove('galaxy-theme');
+                currentTheme = 'dark';
+                document.getElementById('themeToggle').textContent = '🌓 Theme';
+            }
+            try { localStorage.setItem('tom_portal_theme', currentTheme); } catch(e) {}
+        }
+        (function() {
+            try {
+                const saved = localStorage.getItem('tom_portal_theme');
+                if (saved === 'galaxy') {
+                    document.documentElement.classList.add('galaxy-theme');
+                    currentTheme = 'galaxy';
+                    document.getElementById('themeToggle').textContent = '🌙 Galaxy';
+                }
+            } catch(e) {}
+        })();
+    </script>
+</body>
+</html>
