@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom The AI Plus Portal | math12393</title>
+    <meta name="description" content="Tom The AI Plus — ad-supported premium AI with 30+ models, video & image analysis, audio generation, advanced memory, uncensored AI, and native apps for all platforms. $0 forever.">
+    <meta name="theme-color" content="#0a0a14">
+    <meta property="og:title" content="Tom The AI Plus — Premium AI Assistant">
+    <meta property="og:description" content="30+ models, video analysis, audio generation, advanced memory, uncensored AI. Ad-supported, $0 forever.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%236e56cf'/%3E%3Ctext x='50' y='62' text-anchor='middle' fill='white' font-size='55' font-weight='900' font-family='sans-serif'%3ET%3C/text%3E%3Ctext x='56' y='54' text-anchor='start' fill='black' font-size='8' font-weight='bold' font-family='sans-serif'%3EPlus w/%3C/text%3E%3Ctext x='56' y='65' text-anchor='start' fill='black' font-size='10' font-weight='900' font-family='sans-serif'%3EAds%3C/text%3E%3Ctext x='56' y='73' text-anchor='start' fill='black' font-size='7' font-weight='900' font-family='sans-serif' letter-spacing='0.3'%3EPORTAL%3C/text%3E%3C/svg%3E">
+    <style>
+        :root {
+            --bg-deep: #0a0a14;
+            --bg-surface: #111122;
+            --bg-elevated: #181830;
+            --bg-glass: rgba(18, 18, 42, 0.55);
+            --bg-glass-hover: rgba(24, 24, 56, 0.72);
+            --bg-glass-light: rgba(22, 22, 50, 0.48);
+            --text-primary: #f0f0f5;
+            --text-secondary: #b0b0c8;
+            --text-muted: #7878a0;
+            --text-dim: #5e5e80;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.10);
+            --border-bright: rgba(255, 255, 255, 0.16);
+            --accent: #f0a500;
+            --accent-bright: #f5b820;
+            --accent-soft: #d4920a;
+            --accent-deep: #b87a00;
+            --accent-glow: rgba(240, 165, 0, 0.30);
+            --accent-glow-strong: rgba(240, 165, 0, 0.50);
+            --green: #34d399;
+            --green-bg: rgba(52, 211, 153, 0.10);
+            --red: #f87171;
+            --red-bg: rgba(248, 113, 113, 0.10);
+            --blue: #60a5fa;
+            --blue-bg: rgba(96, 165, 250, 0.10);
+            --purple: #a78bfa;
+            --purple-bg: rgba(167, 139, 250, 0.10);
+            --teal: #2dd4bf;
+            --teal-bg: rgba(45, 212, 191, 0.10);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.30);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.60);
+            --shadow-glow: 0 0 40px var(--accent-glow);
+            --shadow-glow-strong: 0 0 55px var(--accent-glow-strong);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+            --font-display: 'SF Pro Display', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --font-body: 'SF Pro Text', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            --transition-fast: 0.16s ease-out;
+            --transition-smooth: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.01em;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg-ambient {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.16;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+        .bg-orb:nth-child(1) {
+            width: 620px;
+            height: 620px;
+            background: #f0a500;
+            top: -200px;
+            left: -140px;
+            animation-delay: 0s;
+        }
+        .bg-orb:nth-child(2) {
+            width: 520px;
+            height: 520px;
+            background: #7c3aed;
+            bottom: -180px;
+            right: -120px;
+            animation-delay: -8s;
+            animation-duration: 24s;
+        }
+        .bg-orb:nth-child(3) {
+            width: 380px;
+            height: 380px;
+            background: #3b82f6;
+            top: 55%;
+            left: 58%;
+            animation-delay: -14s;
+            animation-duration: 21s;
+        }
+        .bg-orb:nth-child(4) {
+            width: 280px;
+            height: 280px;
+            background: #2dd4bf;
+            top: 18%;
+            right: 22%;
+            animation-delay: -4s;
+            animation-duration: 26s;
+            opacity: 0.10;
+        }
+        @keyframes orbFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(55px, -45px) scale(1.13);
+            }
+            50% {
+                transform: translate(-35px, 40px) scale(0.88);
+            }
+            75% {
+                transform: translate(-50px, -22px) scale(1.07);
+            }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.022;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse at center, black 35%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 70%);
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 20, 0.78);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 10px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            flex-shrink: 0;
+        }
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--accent), var(--accent-bright));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 21px;
+            color: #0a0a14;
+            box-shadow: 0 0 24px var(--accent-glow);
+            animation: brandGlow 4s ease-in-out infinite;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .brand-mark::after {
+            content: 'PLUS';
+            position: absolute;
+            top: -7px;
+            right: -18px;
+            font-size: 7px;
+            font-weight: 800;
+            color: #fff;
+            background: var(--accent-soft);
+            padding: 2px 7px;
+            border-radius: 7px;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+        @keyframes brandGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 24px var(--accent-glow);
+            }
+            50% {
+                box-shadow: 0 0 42px var(--accent-glow-strong), 0 0 65px rgba(240, 165, 0, 0.20);
+            }
+        }
+        .brand-text h1 {
+            font-size: 1.18rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 0;
+            font-family: var(--font-display);
+            line-height: 1.1;
+        }
+        .brand-text span {
+            font-size: 0.66rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: block;
+        }
+        .header-pills {
+            display: flex;
+            gap: 7px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.70rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--border-medium);
+            background: var(--bg-glass-light);
+            color: var(--text-secondary);
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+            line-height: 1;
+        }
+        .pill-accent {
+            background: rgba(240, 165, 0, 0.12);
+            border-color: rgba(240, 165, 0, 0.28);
+            color: var(--accent-bright);
+        }
+        .pill-warn {
+            background: var(--red-bg);
+            border-color: rgba(248, 113, 113, 0.22);
+            color: #fca5a5;
+        }
+        .pill-green {
+            background: var(--green-bg);
+            border-color: rgba(52, 211, 153, 0.22);
+            color: var(--green);
+        }
+        .dot-live {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-bright);
+            animation: dotPulse 1.1s infinite;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        @keyframes dotPulse {
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 6px var(--accent-bright);
+            }
+            50% {
+                opacity: 0.15;
+                box-shadow: 0 0 2px var(--accent-bright);
+            }
+        }
+
+        nav {
+            position: sticky;
+            top: 64px;
+            z-index: 40;
+            background: rgba(10, 10, 20, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 6px 18px;
+            display: flex;
+            gap: 5px;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            white-space: nowrap;
+        }
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.74rem;
+            padding: 7px 14px;
+            border-radius: 18px;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            letter-spacing: 0.01em;
+        }
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--text-primary);
+            background: var(--bg-glass-light);
+            outline: none;
+        }
+        nav a.nav-cta {
+            background: var(--accent);
+            color: #0a0a14;
+            font-weight: 700;
+            border-radius: 20px;
+            padding: 7px 17px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        nav a.nav-cta:hover {
+            background: var(--accent-bright);
+            box-shadow: 0 0 22px var(--accent-glow);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        section {
+            padding: 60px 22px;
+            max-width: 1080px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.10em;
+            color: var(--accent-bright);
+            margin-bottom: 6px;
+        }
+        .section-heading {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            font-family: var(--font-display);
+            line-height: 1.2;
+        }
+        .section-subheading {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 34px;
+            max-width: 580px;
+            line-height: 1.6;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-center .section-subheading {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 70px 20px 50px;
+            position: relative;
+        }
+        .hero-badge-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+            font-family: var(--font-display);
+            line-height: 1.14;
+            background: linear-gradient(155deg, #f0f0f5 18%, #f0a500 44%, #f5c840 70%, #f0f0f5 88%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 1.10rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 26px;
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 13px 26px;
+            border-radius: 28px;
+            font-size: 0.90rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition-smooth);
+            font-family: var(--font-body);
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            line-height: 1;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #0a0a14;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            font-weight: 700;
+        }
+        .btn-primary:hover {
+            background: var(--accent-bright);
+            box-shadow: 0 8px 32px var(--accent-glow-strong);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-bright);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .btn-outline:hover {
+            background: var(--bg-glass-light);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-lg {
+            padding: 15px 32px;
+            font-size: 1rem;
+            border-radius: 30px;
+            gap: 9px;
+        }
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.76rem;
+            border-radius: 20px;
+            gap: 4px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+        .card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 22px 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.08) 0%, transparent 50%, rgba(240, 165, 0, 0.10) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg), 0 0 35px rgba(240, 165, 0, 0.08);
+            border-color: var(--border-bright);
+            background: var(--bg-glass-hover);
+        }
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            display: block;
+            line-height: 1;
+        }
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-family: var(--font-display);
+            letter-spacing: -0.01em;
+        }
+        .card p {
+            font-size: 0.80rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+        .card-accent {
+            border-color: rgba(240, 165, 0, 0.18);
+            background: rgba(240, 165, 0, 0.04);
+        }
+        .card-accent:hover {
+            border-color: rgba(240, 165, 0, 0.35);
+            box-shadow: 0 0 40px rgba(240, 165, 0, 0.10);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .download-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px 14px 18px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            position: relative;
+        }
+        .download-card:hover {
+            border-color: var(--accent-soft);
+            box-shadow: var(--shadow-md), 0 0 28px rgba(240, 165, 0, 0.10);
+            transform: translateY(-4px);
+            background: var(--bg-glass-hover);
+        }
+        .download-icon {
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+        .download-card strong {
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .download-card span {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-top: 20px;
+            counter-reset: step;
+            list-style: none;
+        }
+        .step-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+            color: #0a0a14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+        .step-body h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            letter-spacing: -0.01em;
+        }
+        .step-body p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 16px;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+        .faq-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            padding: 16px 4px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-body);
+            letter-spacing: -0.01em;
+            transition: color var(--transition-fast);
+        }
+        .faq-trigger:hover {
+            color: var(--accent-bright);
+        }
+        .faq-trigger .faq-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            transition: transform var(--transition-smooth);
+            flex-shrink: 0;
+            margin-left: 12px;
+            color: var(--text-muted);
+        }
+        .faq-item.open .faq-trigger .faq-icon {
+            transform: rotate(45deg);
+            color: var(--accent-bright);
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.45s;
+            padding: 0 4px;
+        }
+        .faq-item.open .faq-content {
+            max-height: 300px;
+            padding-bottom: 16px;
+        }
+        .faq-content p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 14px;
+        }
+        .badge-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.70rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--border-medium);
+            background: var(--bg-glass-light);
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .badge-tag.highlight {
+            background: rgba(240, 165, 0, 0.10);
+            border-color: rgba(240, 165, 0, 0.25);
+            color: var(--accent-bright);
+        }
+
+        .divider-glow {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.25), rgba(240, 165, 0, 0.50), rgba(240, 165, 0, 0.25), transparent);
+            margin: 32px 0;
+            width: 100%;
+        }
+
+        .model-tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+            justify-content: center;
+        }
+        .model-tag {
+            padding: 8px 16px;
+            border-radius: 22px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            border: 1.5px solid var(--border-medium);
+            background: var(--bg-glass-light);
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+            cursor: default;
+        }
+        .model-tag:nth-child(odd) {
+            border-color: rgba(167, 139, 250, 0.30);
+            color: #c4b5fd;
+        }
+        .model-tag:nth-child(even) {
+            border-color: rgba(45, 212, 191, 0.28);
+            color: #5eeadb;
+        }
+        .model-tag:hover {
+            border-color: var(--accent-bright);
+            color: var(--accent-bright);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+
+        .ad-notice-card {
+            background: rgba(240, 165, 0, 0.06);
+            border: 1.5px dashed rgba(240, 165, 0, 0.30);
+            border-radius: var(--radius-lg);
+            padding: 28px 22px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .ad-notice-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .ad-notice-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .ad-mock {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            margin-top: 14px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            display: inline-block;
+            border: 1px solid var(--border-medium);
+        }
+
+        footer {
+            background: rgba(10, 10, 20, 0.70);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border-subtle);
+            padding: 26px 22px;
+            text-align: center;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-top: 30px;
+        }
+        footer a {
+            color: var(--accent-bright);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .section-heading {
+                font-size: 1.7rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .download-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            section {
+                padding: 44px 16px;
+            }
+            nav {
+                top: 60px;
+            }
+            header {
+                padding: 8px 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            .download-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .btn-lg {
+                padding: 12px 22px;
+                font-size: 0.88rem;
+            }
+            .step-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .bg-orb {
+                animation: none;
+            }
+            .brand-mark {
+                animation: none;
+            }
+            .card:hover {
+                transform: none;
+            }
+            .download-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-ambient" aria-hidden="true">
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+    </div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="wrapper">
+        <header>
+            <div class="header-brand">
+                <div class="brand-mark">T</div>
+                <div class="brand-text">
+                    <h1>Tom The AI Plus</h1>
+                    <span>Premium AI · Ad‑Supported</span>
+                </div>
+            </div>
+            <div class="header-pills">
+                <span class="pill pill-accent"><span class="dot-live"></span> $0 Forever</span>
+                <span class="pill pill-green">~92% Stable</span>
+                <span class="pill pill-warn">Ads (Unblockable)</span>
+            </div>
+        </header>
+        <nav aria-label="Quick navigation">
+            <a href="#main-site">Main Site</a>
+            <a href="#features">Features</a>
+            <a href="#models">Models</a>
+            <a href="#downloads">Downloads</a>
+            <a href="#how-to-use">How to Use</a>
+            <a href="#ad-info">Ad Info</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/" target="_blank" rel="noopener" class="nav-cta">🚀 Launch Plus</a>
+        </nav>
+        <main>
+            <section class="hero-section" id="main-site">
+                <div class="hero-badge-row">
+                    <span class="pill pill-accent">30+ Models</span>
+                    <span class="pill pill-green">Uncensored AI</span>
+                    <span class="pill" style="color:#a78bfa;border-color:rgba(167,139,250,0.3);">Advanced GPT</span>
+                </div>
+                <h1 class="hero-title">Tom The AI Plus<br>Your Premium Ad‑Supported AI Companion</h1>
+                <p class="hero-desc">Experience 30+ custom models, video &amp; image analysis, audio generation, advanced local memory, and uncensored AI — all completely free, supported by unblockable ads. $0, forever.</p>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+                    <a href="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">🌐 Visit Main Website</a>
+                    <a href="#features" class="btn btn-outline btn-lg">✨ Explore Features</a>
+                </div>
+            </section>
+
+            <section id="features">
+                <div class="text-center">
+                    <span class="section-label">Capabilities</span>
+                    <h2 class="section-heading">Everything Tom The AI Plus Offers</h2>
+                    <p class="section-subheading">Built for power users who want more models, richer media, and deeper control — all with the transparency of ad support.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card card-accent">
+                        <span class="card-icon">🧠</span>
+                        <h3>30+ Custom Models</h3>
+                        <p>Switch between over 30 AI models including GPT-style, Claude-style, and specialized research engines. Full model selection UI with per-model settings.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🎬</span>
+                        <h3>Video &amp; Image Analysis</h3>
+                        <p>Upload videos and images for detailed visual analysis, object recognition, scene understanding, and frame-by-frame insights.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🎵</span>
+                        <h3>Audio &amp; Music Generation</h3>
+                        <p>Create original audio clips, background music, and sound effects directly within the AI interface. Shared media quota applies.</p>
+                    </div>
+                    <div class="card card-accent">
+                        <span class="card-icon">💾</span>
+                        <h3>Advanced Local Memory</h3>
+                        <p>Superior chat memory that persists across sessions on your device. The AI remembers context, preferences, and past conversations better than ever.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🔓</span>
+                        <h3>Uncensored AI (Basic)</h3>
+                        <p>Access an uncensored mode that provides unfiltered responses for research, creative writing, and mature discussions within safety boundaries.</p>
+                    </div>
+                    <div class="card card-accent">
+                        <span class="card-icon">🔬</span>
+                        <h3>Advanced GPT with Research Tools</h3>
+                        <p>Leverage an enhanced GPT engine equipped with advanced research capabilities, deep reasoning, and comprehensive AI tool integration.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">⚡</span>
+                        <h3>Very Fast Text Generation</h3>
+                        <p>Optimized inference pipelines deliver text responses at remarkable speed — average latency significantly lower than standard models.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🎛️</span>
+                        <h3>Lots of Settings Per AI</h3>
+                        <p>Fine-tune temperature, top-p, frequency penalty, context window, and persona parameters for each individual model you use.</p>
+                    </div>
+                    <div class="card card-accent">
+                        <span class="card-icon">📱</span>
+                        <h3>Enhanced Mobile Support</h3>
+                        <p>Specifically optimized for iOS/Safari and mobile browsers. Smoother touch interactions, responsive layouts, and native app alternatives.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🖼️</span>
+                        <h3>One Background</h3>
+                        <p>A sleek, consistent interface theme that reduces visual clutter, helping you focus on your conversations and creative work.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">📊</span>
+                        <h3>Shared Media Quota</h3>
+                        <p>Generous shared quota for video, image, and audio generation — balanced across all media types so you can create freely.</p>
+                    </div>
+                    <div class="card card-accent">
+                        <span class="card-icon">🔒</span>
+                        <h3>No Data Collected</h3>
+                        <p>Your privacy matters. Tom The AI Plus does not collect personal data. Conversations stay on your device, always.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider-glow" aria-hidden="true">
+
+            <section id="models">
+                <div class="text-center">
+                    <span class="section-label">Model Selection</span>
+                    <h2 class="section-heading">30+ Models at Your Fingertips</h2>
+                    <p class="section-subheading">From creative writing to deep research, pick the perfect AI for every task. Each model comes with its own settings panel.</p>
+                </div>
+                <div class="model-tag-cloud">
+                    <span class="model-tag">GPT-4 Turbo</span>
+                    <span class="model-tag">Claude 3.5 Sonnet</span>
+                    <span class="model-tag">Gemini Pro</span>
+                    <span class="model-tag">Llama 3 70B</span>
+                    <span class="model-tag">Mistral Large</span>
+                    <span class="model-tag">DeepSeek V3</span>
+                    <span class="model-tag">Qwen 2.5</span>
+                    <span class="model-tag">Command R+</span>
+                    <span class="model-tag">Falcon 180B</span>
+                    <span class="model-tag">Mixtral 8x22B</span>
+                    <span class="model-tag">Yi 34B</span>
+                    <span class="model-tag">Phi-3 Medium</span>
+                    <span class="model-tag">DBRX</span>
+                    <span class="model-tag">Grok-1</span>
+                    <span class="model-tag">OLMo 7B</span>
+                    <span class="model-tag">StableLM 2</span>
+                    <span class="model-tag">CodeLlama 70B</span>
+                    <span class="model-tag">WizardLM 2</span>
+                    <span class="model-tag">OpenChat 3.5</span>
+                    <span class="model-tag">Zephyr 141B</span>
+                </div>
+                <p class="text-center" style="font-size:0.78rem;color:var(--text-muted);margin-top:14px;">And many more — with regular additions and community-requested models.</p>
+            </section>
+
+            <hr class="divider-glow" aria-hidden="true">
+
+            <section id="ad-info">
+                <div class="text-center">
+                    <span class="section-label">Transparency</span>
+                    <h2 class="section-heading">Why Ad‑Supported?</h2>
+                    <p class="section-subheading">We believe powerful AI should be free for everyone. Here's how the ad model works — honestly.</p>
+                </div>
+                <div class="ad-notice-card">
+                    <h3>📢 Ads Keep Tom The AI Plus Free — Forever</h3>
+                    <p>Tom The AI Plus displays advertisements that <strong>cannot be blocked</strong> by ad blockers. These ads are served directly through our platform and are designed to be non-intrusive while keeping the service completely free. No data is collected for ad targeting. No personal information is ever sold. You get full access to 30+ models, video analysis, audio generation, and uncensored AI — all for $0, permanently.</p>
+                    <div class="ad-mock">🔹 Sponsored: This is a sample ad placement — real ads appear in the main app interface.</div>
+                </div>
+                <div class="badge-row" style="margin-top:22px;">
+                    <span class="badge-tag highlight">$0 Forever</span>
+                    <span class="badge-tag">No Data Collection</span>
+                    <span class="badge-tag">No Premium Tiers</span>
+                    <span class="badge-tag">Server-Side Ads</span>
+                    <span class="badge-tag">Community Shared</span>
+                    <span class="badge-tag">Closed Source</span>
+                </div>
+            </section>
+
+            <hr class="divider-glow" aria-hidden="true">
+
+            <section id="how-to-use">
+                <div class="text-center">
+                    <span class="section-label">Getting Started</span>
+                    <h2 class="section-heading">How to Use Tom The AI Plus</h2>
+                    <p class="section-subheading">Five simple steps to unlock the full power of your premium AI companion.</p>
+                </div>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-body">
+                            <h3>Visit the Plus Website</h3>
+                            <p>Head to the <a href="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/" target="_blank" rel="noopener" style="color:var(--accent-bright);">Tom The AI Plus main website</a>. Bookmark it or add it to your home screen for quick access on any device.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-body">
+                            <h3>Choose Your Model &amp; Persona</h3>
+                            <p>Browse the model selector and pick from 30+ AI engines. Each model supports custom personas like Coder, Researcher, Creative, or Analyst — fully customizable.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-body">
+                            <h3>Upload Media &amp; Start Creating</h3>
+                            <p>Drag and drop images or videos for analysis, request audio generation, or dive into deep text conversations. The shared media quota keeps track seamlessly.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">4</div>
+                        <div class="step-body">
+                            <h3>Tweak Settings &amp; Memory</h3>
+                            <p>Open the settings panel for any model to adjust temperature, context length, and more. Your advanced local memory retains context across sessions automatically.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">5</div>
+                        <div class="step-body">
+                            <h3>Download a Native App (Optional)</h3>
+                            <p>For the best experience, grab the dedicated app for your platform — iOS, Android, Windows, macOS, or Linux. All apps are free and ad-supported.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider-glow" aria-hidden="true">
+
+            <section id="downloads">
+                <div class="text-center">
+                    <span class="section-label">Applications</span>
+                    <h2 class="section-heading">Download Tom The AI Plus Apps</h2>
+                    <p class="section-subheading">Native experiences for every device. Free, ad-supported, and always up to date.</p>
+                </div>
+                <div class="download-grid">
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-MOBILECONFIG-Wen/plus-config.html" target="_blank" rel="noopener">
+                        <span class="download-icon">📱</span>
+                        <strong>MobileConfig</strong>
+                        <span>iOS Safari Bookmark</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-IPA-Wen/ipa-plus.html" target="_blank" rel="noopener">
+                        <span class="download-icon">🍎</span>
+                        <strong>iOS IPA</strong>
+                        <span>iPhone / iPad App</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-APK-Wen/apk-plus.html" target="_blank" rel="noopener">
+                        <span class="download-icon">🤖</span>
+                        <strong>Android APK</strong>
+                        <span>Android Application</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-EXE-Wen/exe-plus.html" target="_blank" rel="noopener">
+                        <span class="download-icon">🖥️</span>
+                        <strong>Windows EXE</strong>
+                        <span>Desktop Application</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-DMG-Wen/dmg-plus.html" target="_blank" rel="noopener">
+                        <span class="download-icon">🍏</span>
+                        <strong>macOS DMG</strong>
+                        <span>Mac Desktop App</span>
+                    </a>
+                    <a class="download-card" href="https://math12393.codeberg.page/Tom-The-AI-APPIMAGE-Wen/appimage-plus.html" target="_blank" rel="noopener">
+                        <span class="download-icon">🐧</span>
+                        <strong>Linux AppImage</strong>
+                        <span>Linux Desktop</span>
+                    </a>
+                </div>
+                <p class="text-center" style="font-size:0.78rem;color:var(--text-muted);margin-top:16px;">All files hosted on Codeberg Pages. Enhanced mobile support for iOS/Safari.</p>
+            </section>
+
+            <hr class="divider-glow" aria-hidden="true">
+
+            <section id="faq">
+                <div class="text-center">
+                    <span class="section-label">Questions</span>
+                    <h2 class="section-heading">Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            What makes Tom The AI Plus different from the free version?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Plus includes 30+ custom models, video &amp; image analysis, audio/music generation, advanced local memory, uncensored AI mode, an advanced GPT engine with research tools, and significantly more settings per model. It is ad-supported rather than completely free of ads, but remains $0 forever.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            How does the ad model work? Can I block ads?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Ads are served directly through our platform infrastructure and are designed to be unblockable by conventional ad blockers. They help us keep the service free for everyone. No personal data is collected for ad targeting, and we do not sell any user information.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            Is Tom The AI Plus really free forever?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Yes. The ad-supported model ensures the service remains $0 permanently. There are no premium tiers, no subscription fees, and no hidden costs. The community shares and distributes the AI freely.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            What does "~92% stable" mean?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Tom The AI Plus has approximately a 92% reliability rate. About 8% of the time, especially on extremely complex or unusual requests, it may return an error or a less helpful response. This is a known characteristic and the team continuously works to improve stability.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            Do you collect my personal data?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>No. Tom The AI Plus does not collect personal data. Conversations and media are stored only on your local device via the advanced memory system. No external servers retain your chat history or personal information.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            What is the uncensored AI mode?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>The basic uncensored mode provides more open and unfiltered responses suitable for research, creative writing, and mature topics. It operates within broad safety guidelines but offers significantly fewer restrictions than standard models.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-trigger" aria-expanded="false">
+                            Can I use Tom The AI Plus on my iPhone?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-content">
+                            <p>Absolutely. There is a dedicated iOS IPA, a MobileConfig profile for Safari home screen bookmarking, and the web version is fully optimized for iOS/Safari with enhanced mobile support.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider-glow" aria-hidden="true">
+
+            <section id="community">
+                <div class="text-center">
+                    <span class="section-label">Community</span>
+                    <h2 class="section-heading">Built for the People, Shared by the People</h2>
+                    <p class="section-subheading">Tom The AI Plus is a closed-source project hosted on Codeberg, distributed freely by a passionate community.</p>
+                </div>
+                <div style="max-width:650px;margin:0 auto;text-align:center;">
+                    <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.7;">All applications and the main website are hosted on <strong>Codeberg</strong>, ensuring transparency and reliability. The project is closed-source but community-shared — no corporate ownership, no venture capital, just a commitment to accessible AI.</p>
+                    <div class="badge-row">
+                        <span class="badge-tag highlight">Codeberg Hosted</span>
+                        <span class="badge-tag">Closed Source</span>
+                        <span class="badge-tag">Community Shared</span>
+                        <span class="badge-tag">No Tracking</span>
+                        <span class="badge-tag">Ad-Supported</span>
+                        <span class="badge-tag">30+ Models</span>
+                        <span class="badge-tag">Uncensored</span>
+                        <span class="badge-tag">All Platforms</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="text-center" style="padding:40px 20px 50px;">
+                <p style="font-size:1.2rem;font-weight:700;margin-bottom:10px;">Ready to experience the Plus difference?</p>
+                <a href="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">🚀 Launch Tom The AI Plus Now</a>
+            </div>
+        </main>
+        <footer>
+            <p><strong>Tom The AI Plus</strong> · Ad‑Supported Premium AI · <span class="pill pill-accent" style="display:inline-flex;vertical-align:middle;margin:0 4px;">$0 Forever</span></p>
+            <p style="margin-top:6px;">Hosted on <a href="https://codeberg.org/" target="_blank" rel="noopener">Codeberg</a> · Closed Source · Community Shared · No Data Collected</p>
+        </footer>
+    </div>
+    <script>
+        (function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(function(item) {
+                const trigger = item.querySelector('.faq-trigger');
+                if (!trigger) return;
+                trigger.addEventListener('click', function() {
+                    const isOpen = item.classList.contains('open');
+                    faqItems.forEach(function(other) {
+                        other.classList.remove('open');
+                        var otherTrigger = other.querySelector('.faq-trigger');
+                        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+                    });
+                    if (!isOpen) {
+                        item.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    } else {
+                        trigger.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+            var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                document.documentElement.classList.add('reduced-motion');
+            }
+            var allLinks = document.querySelectorAll('a[href^="#"]');
+            allLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (!targetId || targetId === '#') return;
+                    var targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
