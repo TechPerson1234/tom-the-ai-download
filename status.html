@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom The AI - Status Page | math12393</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            
+            
+            --working: #22c55e;        /* Green */
+            --construction: #eab308;   /* Yellow */
+            --slow: #f97316;           /* Orange */
+            --down: #ef4444;           /* Red */
+            --permanent: #7f1d1d;      /* Double Red/Maroon */
+            --soon: #a855f7;           /* Purple */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--working);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        
+        .legend {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            border: 1px solid #334155;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        
+        .status-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .status-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, border 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .status-card:hover {
+            transform: translateX(5px);
+            border-color: #475569;
+        }
+
+        .status-card.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .info p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        
+        .contact-section {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #334155;
+            width: 100%;
+        }
+
+        .contact-links a {
+            color: var(--soon);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        
+        footer {
+            margin-top: auto;
+            padding: 40px 0 20px;
+            color: var(--text-dim);
+            font-family: monospace;
+        }
+
+        
+        .bg-green { background-color: var(--working); color: #000; }
+        .bg-purple { background-color: var(--soon); color: #fff; }
+        .bg-yellow { background-color: var(--construction); color: #000; }
+        .bg-orange { background-color: var(--slow); color: #000; }
+        .bg-red { background-color: var(--down); color: #fff; }
+        .bg-double-red { background-color: var(--permanent); border: 2px solid red; color: #fff; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>All Operational</h1>
+        <p class="subtitle">Official Status Page for Tom The AI Ecosystem</p>
+
+        <div class="legend">
+            <div class="legend-item"><span class="dot" style="background: var(--working)"></span> Working</div>
+            <div class="legend-item"><span class="dot" style="background: var(--construction)"></span> Under Construction</div>
+            <div class="legend-item"><span class="dot" style="background: var(--slow)"></span> Slow</div>
+            <div class="legend-item"><span class="dot" style="background: var(--down)"></span> Down</div>
+            <div class="legend-item"><span class="dot" style="background: var(--permanent)"></span> Permanent Shut Down</div>
+            <div class="legend-item"><span class="dot" style="background: var(--soon)"></span> Coming Soon</div>
+        </div>
+
+        <div class="status-grid">
+            
+            <a href="https://math12393.codeberg.page/Tom-The-ai-working/" target="_blank" class="status-card">
+                <div class="info">
+                    <h3>Tom The AI - Lite</h3>
+                    <p>Lightweight AI experience</p>
+                </div>
+                <span class="badge bg-green">Working</span>
+            </a>
+
+            <a href="https://math12393.codeberg.page/TOM-The-AI-Wen/" target="_blank" class="status-card">
+                <div class="info">
+                    <h3>Tom The AI - Free</h3>
+                    <p>Standard access for everyone</p>
+                </div>
+                <span class="badge bg-green">Working</span>
+            </a>
+
+            <a href="https://math12393.codeberg.page/Tom-The-AI-Plus-Wen/" target="_blank" class="status-card">
+                <div class="info">
+                    <h3>Tom The AI - Plus</h3>
+                    <p>Enhanced features (w/ ads)</p>
+                </div>
+                <span class="badge bg-green">Working</span>
+            </a>
+
+            <a href="https://math12393.codeberg.page/Tom-The-AI-Premium-Wen/" target="_blank" class="status-card">
+                <div class="info">
+                    <h3>Tom The AI - Premium</h3>
+                    <p> High Performance in AI Power</p>
+                </div>
+                <span class="badge bg-yellow">Under Construction</span>
+            </a>
+
+          <div class="status-card disabled">
+                <div class="info">
+                    <h3>Tom The AI - Untra</h3>
+                    <p>Maxed out AI of TOM</p>
+                </div>
+                <span class="badge bg-purple">Coming Soon</span>
+            </div>
+
+           <div class="status-card disabled">
+                 <div class="info">
+                  <h3>Tom The AI - Business </h3>
+                  <p> Earn Money and Make A Business with AI </p>
+                 </div>
+               <span class="badge bg-purple"> Coming Soon</span>
+               </div>  
+
+            <div class="status-card disabled">
+                <div class="info">
+                    <h3>Tom The AI - Enterprise</h3>
+                    <p>Custom solutions for business</p>
+                </div>
+                <span class="badge bg-purple">Coming Soon</span>
+            </div>
+
+        </div>
+
+        <div class="contact-section">
+            <h3>Connect with us</h3>
+            <p>Email: <strong>wen471942@gmail.com</strong></p>
+            
+            <div class="contact-links">
+                <a href="https://discord.gg/mjzfv2Rm3f" target="_blank">Discord Server</a> | 
+                <a href="https://stoat.chat/invite/w4q2ntVp" target="_blank">Stoat/Revolt Server</a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="clock">
+        Loading system time...
+    </footer>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString();
+            document.getElementById('clock').innerText = "System Time: " + timeString;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
