@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
+
     <style>
         * {
             margin: 0;
@@ -65,7 +65,6 @@
 
         a { text-decoration: none; color: inherit; }
 
-        
         .btn {
             display: inline-block;
             padding: 0.75rem 1.8rem;
@@ -104,7 +103,6 @@
             transform: translateY(-2px);
         }
 
-        
         header {
             padding: 20px 0;
             backdrop-filter: blur(12px);
@@ -141,7 +139,6 @@
             .nav-links { display: none; }
         }
 
-        
         .hero {
             padding: 80px 0 60px;
             position: relative;
@@ -197,7 +194,6 @@
             transform: rotate(3deg);
         }
 
-      
         .section-header {
             text-align: center;
             margin-bottom: 64px;
@@ -211,7 +207,6 @@
             font-weight: 300;
         }
 
-       
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -332,7 +327,82 @@
             margin-top: 8px;
         }
 
-   
+        .lite-api-panel {
+            margin-top: 32px;
+            background: #ffffff;
+            border: 1px solid #cfe3ff;
+            border-radius: var(--radius-card);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+        }
+        .lite-api-panel h3 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .lite-api-panel h3 i { color: var(--accent); }
+        .lite-api-panel .api-intro {
+            color: var(--text-soft);
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+        .api-endpoint {
+            display: block;
+            background: #0f172a;
+            color: #7dd3fc;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin: 18px 0 12px;
+        }
+        .api-response {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .api-response code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #0f2b4f;
+        }
+        .lite-api-panel details {
+            border-top: 1px solid #e6edf4;
+            padding-top: 18px;
+            margin-top: 18px;
+        }
+        .lite-api-panel summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--accent);
+            list-style: none;
+        }
+        .lite-api-panel summary::-webkit-details-marker { display: none; }
+        .lite-api-panel summary::before {
+            content: "\f121";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+        }
+        .lite-api-panel pre {
+            margin-top: 18px;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 22px;
+            border-radius: 18px;
+            overflow: auto;
+            max-height: 520px;
+            font-size: 0.8rem;
+            line-height: 1.55;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            white-space: pre;
+        }
+
         .embed-section {
             background: var(--bg-off);
             border-radius: var(--radius-section);
@@ -369,7 +439,6 @@
             display: block;
         }
 
-       
         .feature-matrix {
             background: white;
             border-radius: var(--radius-section);
@@ -395,7 +464,6 @@
         }
         .matrix-table tr:last-child td { border-bottom: none; }
 
-       
         .roadmap {
             margin: 80px 0;
         }
@@ -421,7 +489,6 @@
         }
         .milestone h4 { margin-bottom: 12px; }
 
-      
         .faq-section {
             margin: 80px 0;
         }
@@ -461,7 +528,6 @@
             transform: rotate(180deg);
         }
 
-       
         .modal {
             display: none;
             position: fixed;
@@ -496,7 +562,6 @@
         .modal-content h2 { margin-bottom: 24px; }
         .modal-content p { margin-bottom: 16px; color: var(--text-soft); }
 
-       
         footer {
             background: #f2f6fa;
             padding: 56px 0 32px;
@@ -563,7 +628,6 @@
 </head>
 <body>
 
-
 <header>
     <div class="container navbar">
         <a href="#" class="logo">Tom The AI</a>
@@ -574,12 +638,12 @@
             <a href="#faq">FAQ</a>
             <a href="#try">Try Lite</a>
         </div>
-        <a href="https://techperson1234.github.io/Tom-the-Ai-status-wen/" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1.5rem;">Status</a>
+        <a href="status.html target="_blank" class="btn btn-outline" style="padding: 0.5rem 1.5rem;">Status</a>
     </div>
 </header>
 
 <main>
-  
+
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-text">
@@ -613,14 +677,13 @@
         </div>
     </section>
 
- 
     <section id="products" class="container">
         <div class="section-header">
             <h2>Choose your <span style="border-bottom: 5px solid #93c5fd;">Tom</span></h2>
             <p>One intelligence, seven characters. Click to explore.</p>
         </div>
         <div class="product-grid">
-            
+
             <div class="product-card" style="border: 1px solid #cfe3ff; background: #ffffff;">
                 <div class="card-icon"><i class="fas fa-feather-alt"></i></div>
                 <h3>Tom The AI Lite <span class="product-tag" style="background:#e2f0e6; color:#0f766e;">⚡ always on</span></h3>
@@ -635,11 +698,11 @@
                     <li><i class="fas fa-check-circle"></i> No Local/AI Memory  </li>
                     <li><i class="fas fa-check-circle"></i> Open Source </li>
                     <li><i class="fas fa-check-circle"></i> Hosted on Github </li>
-<li><i class="fas fa-check-circle"></i> Has Github Page Websites </li>
+                    <li><i class="fas fa-check-circle"></i> Has Github Page Websites </li>
                 </ul>
                 <a href="https://techperson1234.github.io/Tom-The-ai-lite-Wen/" target="_blank" class="btn btn-outline" style="text-align: center;">Launch Lite Chat →</a>
             </div>
-           
+
             <div class="product-card">
                 <div class="card-icon"><i class="fas fa-microchip"></i></div>
                 <h3>Tom The AI <span class="product-tag">Free</span></h3>
@@ -663,12 +726,10 @@
                     <li><i class="fas fa-check-circle"></i> Some Data Collected for Better Stuff </li>
                     <li><i class="fas fa-check-circle"></i> No Ads </li>
                     <li><i class="fas fa-check-circle"></i> Closed Source </li>
-                    
                 </ul>
                 <a href="free.html" target="_blank" class="btn btn-outline" style="text-align: center;">Learn more →</a>
             </div>
 
-         
             <div class="product-card">
                 <div class="card-icon"><i class="fas fa-cloud"></i></div>
                 <h3>Tom The AI Plus <span class="product-tag">with ads</span></h3>
@@ -686,9 +747,7 @@
                     <li><i class="fas fa-check-circle"></i> Has Ads (Ad Blocker can't Prevent) </li>
                     <li><i class="fas fa-check-circle"></i> Has Uncencored AI (Basic) </li>
                     <li><i class="fas fa-check-circle"></i> Has Advanced GPT with Advance Research and AI Tools </li>
-
                     <li><i class="fas fa-check-circle"></i> Very Fast Text generations Average </li>
-
                     <li><i class="fas fa-check-circle"></i> Data Not collected </li>
                     <li><i class="fas fa-check-circle"></i> Has IPA/APK/DMG/EXE/MOBILECONFIG Applications </li>
                     <li><i class="fas fa-check-circle"></i> Has Github Page Websites </li>
@@ -699,7 +758,6 @@
                 <a href="plus.html" target="_blank" class="btn btn-outline" style="text-align: center;">Learn more →</a>
             </div>
 
-          
             <div class="product-card" style="border: 2px solid #fbbf24; background: #fffbeb;">
                 <div class="card-icon"><i class="fas fa-crown" style="color: #f59e0b;"></i></div>
                 <h3>Tom The AI Premium <span class="product-tag" style="background:#fef3c7; color:#b45309;">new</span></h3>
@@ -731,7 +789,6 @@
                 <a href="premium.html" target="_blank" class="btn btn-primary" style="margin-top: 20px; text-align: center;">BUILDING RIGHT NOW · learn more →</a>
             </div>
 
-         
             <div class="product-card" style="border: 2px solid #d4af37; background: radial-gradient(ellipse at top, #fff9e8, #ffffff);">
                 <div class="card-icon"><i class="fas fa-gem" style="color: #d4af37;"></i></div>
                 <h3>Tom The AI Ultra <span class="product-tag" style="background: #d4af37; color: #2c1e0e; font-weight:700;">Ultimate</span></h3>
@@ -763,8 +820,7 @@
                 </div>
                 <a href="ultra.html" target="_blank" class="btn btn-primary" style="margin-top: 20px; text-align: center; background: #b8860b; border:none;">Learn More →</a>
             </div>
-          
-    
+
             <div class="product-card" style="border: 2px solid #2c5f8a; background: #f6fafe;">
                 <div class="card-icon"><i class="fas fa-user-tie" style="color: #1e4a6e;"></i></div>
                 <h3>Tom The AI Business <span class="product-tag" style="background:#1e4a6e; color:white;">Solo Entrepreneur</span></h3>
@@ -794,9 +850,129 @@
                 <a href="enterprise.html" target="_blank" class="btn btn-outline" style="text-align: center;">Learn more →</a>
             </div>
         </div>
+
+        <div class="lite-api-panel">
+            <h3><i class="fas fa-code"></i> Tom The AI Lite — public API &amp; source</h3>
+            <p class="api-intro">Anyone can use the API. No key, no sign-up, no account. Just send a GET request with your prompt.</p>
+            <code class="api-endpoint">GET https://tom-the-ai-api.wen471942.workers.dev/?prompt=YOUR_TEXT</code>
+            <p class="api-response">Response: <code>{ "status": "ok", "response": "..." }</code></p>
+            <details>
+                <summary>View the full Lite source code</summary>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Tom The Ai - Lite Edition | math12393&lt;/title&gt;
+    &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+    &lt;style&gt;
+        body { background: #000; color: #00f2ff; font-family: Arial, sans-serif; padding: 20px; }
+        #chat { border: 1px solid #333; height: 300px; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
+        .msg { margin-bottom: 10px; padding: 10px; border-radius: 5px; word-wrap: break-word; }
+        .user { color: #fff; background: #222; }
+        .ai { color: #00f2ff; background: #111; }
+        .error { color: #ff4444; background: #220000; border: 1px solid #ff4444; }
+        input { width: 70%; padding: 10px; background: #111; color: #fff; border: 1px solid #00f2ff; font-size: 16px; }
+        button { padding: 10px; background: #00f2ff; color: #000; border: none; font-weight: bold; cursor: pointer; }
+        button:disabled { background: #444; color: #888; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h3&gt;Tom The AI Lite (All Devices Supported)&lt;/h3&gt;
+    &lt;div id="chat"&gt;
+        &lt;div class='msg ai'&gt;Tom: System online. Maximum backward compatibility engaged.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;input type="text" id="in" placeholder="Ask Tom..."&gt;
+    &lt;button id="btn" onclick="ask()"&gt;Send&lt;/button&gt;
+
+    &lt;script type="text/javascript"&gt;
+        var chat = document.getElementById('chat');
+        var input = document.getElementById('in');
+        var btn = document.getElementById('btn');
+
+        var WORKER_URL = "https://tom-the-ai-api.wen471942.workers.dev/";
+
+        function ask() {
+            var val = input.value;
+
+            val = val ? val.replace(/^\s+|\s+$/g, '') : '';
+            if(!val) return;
+
+            chat.innerHTML += "&lt;div class='msg user'&gt;Me: " + val + "&lt;/div&gt;";
+            input.value = "";
+            btn.disabled = true;
+
+            if (chat.scrollHeight) { chat.scrollTop = chat.scrollHeight; }
+
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                try {
+                    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch(e) {
+                    try { xhr = new ActiveXObject("Microsoft.XMLHTTP"); } catch(e2) {
+                        chat.innerHTML += "&lt;div class='msg error'&gt;Error: This device does not support web requests.&lt;/div&gt;";
+                        btn.disabled = false;
+                        return;
+                    }
+                }
+            }
+
+            var encoder = window.encodeURIComponent ? encodeURIComponent : escape;
+            xhr.open("GET", WORKER_URL + "?prompt=" + encoder(val), true);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    btn.disabled = false;
+
+                    if (xhr.status === 200 || xhr.status === 0) {
+                        try {
+                            var data;
+
+                            if (window.JSON &amp;&amp; window.JSON.parse) {
+                                data = JSON.parse(xhr.responseText);
+                            } else {
+                                data = eval('(' + xhr.responseText + ')');
+                            }
+
+                            if (data &amp;&amp; data.status === "ok") {
+                                chat.innerHTML += "&lt;div class='msg ai'&gt;Tom: " + data.response + "&lt;/div&gt;";
+                            } else {
+                                var msg = data &amp;&amp; data.message ? data.message : "Unknown API Error";
+                                chat.innerHTML += "&lt;div class='msg error'&gt;Error: " + msg + "&lt;/div&gt;";
+                            }
+                        } catch (err) {
+                            chat.innerHTML += "&lt;div class='msg error'&gt;Data Error: Unable to read response.&lt;/div&gt;";
+                        }
+                    } else {
+                        chat.innerHTML += "&lt;div class='msg error'&gt;Connection Failed: Status " + xhr.status + ". This is likely a TLS/SSL security block on this device.&lt;/div&gt;";
+                    }
+
+                    if (chat.scrollHeight) { chat.scrollTop = chat.scrollHeight; }
+                }
+            };
+
+            xhr.onerror = function() {
+                btn.disabled = false;
+                chat.innerHTML += "&lt;div class='msg error'&gt;Network Error: Connection refused by device security.&lt;/div&gt;";
+            };
+
+            xhr.send(null);
+        }
+
+        input.onkeypress = function(e) {
+            var charCode = (e &amp;&amp; e.which) ? e.which : (window.event ? window.event.keyCode : 0);
+            if(charCode == 13) { ask(); return false; }
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </details>
+        </div>
     </section>
 
-    
     <section id="features" class="container">
         <div class="feature-matrix">
             <h3 style="margin-bottom: 32px;">Full feature breakdown</h3>
@@ -820,7 +996,6 @@
         </div>
     </section>
 
- 
     <section id="try" class="container">
         <div class="embed-section">
             <div class="section-header" style="margin-bottom: 32px;">
@@ -838,7 +1013,6 @@
         </div>
     </section>
 
-
     <section id="roadmap" class="container roadmap">
         <div class="section-header">
             <h2>What's next</h2>
@@ -855,7 +1029,7 @@
                 <h4>Custom Domains</h4>
                 <p>Turning Tom into a professtional website online</p>
             </div>
-          <div class="milestone">
+            <div class="milestone">
                 <div class="date">January 2027</div>
                 <h4>Introducing Ultra</h4>
                 <p>Tom Into a AI Source with Unlimited Generations</p>
@@ -873,7 +1047,6 @@
         </div>
     </section>
 
-  
     <section id="faq" class="container faq-section">
         <div class="section-header">
             <h2>Frequently asked</h2>
@@ -915,7 +1088,6 @@
         </div>
     </section>
 
- 
     <div class="container">
         <div class="cta-block" style="background: linear-gradient(105deg, #0a2540 0%, #1f4662 100%); border-radius: 48px; padding: 64px 48px; color: white; text-align: center; margin: 80px 0;">
             <h3 style="font-size: 2.5rem;">Ready for more power?</h3>
@@ -924,7 +1096,6 @@
         </div>
     </div>
 </main>
-
 
 <footer id="contact">
     <div class="container">
@@ -953,7 +1124,7 @@
                 <a href="#" id="termsLink">Terms of Service</a>
                 <a href="#" id="privacyLink">Privacy Policy</a>
                 <a href="#" id="cookiesLink">Cookie Settings</a>
-                <a href="https://techperson1234.github.io/Tom-the-Ai-status-wen/">System Status</a>
+                <a href="status.html">System Status</a>
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
@@ -973,7 +1144,6 @@
         </div>
     </div>
 </footer>
-
 
 <div class="modal" id="termsModal">
     <div class="modal-content">
@@ -1019,7 +1189,6 @@
     </div>
 </div>
 
-<!-- ACCESSIBILITY MODAL - custom box just like the others -->
 <div class="modal" id="accessibilityModal">
     <div class="modal-content">
         <span class="modal-close">&times;</span>
@@ -1043,7 +1212,7 @@
 
 <script>
     (function() {
-       
+
         const items = document.querySelectorAll('.accordion-item');
         items.forEach(item => {
             const title = item.querySelector('.accordion-title');
@@ -1052,7 +1221,6 @@
             });
         });
 
-        
         function setupModal(modalId, triggerIds) {
             const modal = document.getElementById(modalId);
             if (!modal) return;
@@ -1070,14 +1238,11 @@
         setupModal('termsModal', ['termsLink', 'termsFooter']);
         setupModal('privacyModal', ['privacyLink', 'privacyFooter']);
         setupModal('cookiesModal', ['cookiesLink']);
-        // Accessibility Modal - now a custom box just like terms & privacy
         setupModal('accessibilityModal', ['accessibilityLink']);
 
-        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const href = anchor.getAttribute('href');
             if (href === "#" || href === "") return;
-            // skip modal-only ids? no conflict, fine.
             const target = document.querySelector(href);
             if (target && !anchor.closest('.modal-content')) {
                 anchor.addEventListener('click', function(e) {
