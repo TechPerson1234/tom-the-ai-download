@@ -371,6 +371,44 @@
             font-size: 0.85rem;
             color: #0f2b4f;
         }
+
+        .api-doc-row {
+            margin-top: 26px;
+        }
+        .api-doc-label {
+            font-weight: 600;
+            color: #143450;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .api-doc-label i { color: var(--accent); }
+        .api-params {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .api-params th, .api-params td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e6edf4;
+        }
+        .api-params th {
+            background: #f2f7ff;
+            color: #143450;
+            font-weight: 600;
+        }
+        .api-params tr:last-child td { border-bottom: none; }
+        .api-params code {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #0f2b4f;
+        }
+
         .lite-api-panel details {
             border-top: 1px solid #e6edf4;
             padding-top: 18px;
@@ -381,13 +419,20 @@
             font-weight: 600;
             color: var(--accent);
             list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 0;
         }
         .lite-api-panel summary::-webkit-details-marker { display: none; }
         .lite-api-panel summary::before {
             content: "\f121";
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
-            margin-right: 10px;
+            margin-right: 4px;
+        }
+        .lite-api-panel details[open] summary {
+            margin-bottom: 8px;
         }
         .lite-api-panel pre {
             margin-top: 18px;
@@ -852,124 +897,139 @@
         </div>
 
         <div class="lite-api-panel">
-            <h3><i class="fas fa-code"></i> Tom The AI Lite — public API &amp; source</h3>
-            <p class="api-intro">Anyone can use the API. No key, no sign-up, no account. Just send a GET request with your prompt.</p>
-            <code class="api-endpoint">GET https://tom-the-ai-api.wen471942.workers.dev/?prompt=YOUR_TEXT</code>
-            <p class="api-response">Response: <code>{ "status": "ok", "response": "..." }</code></p>
-            <details>
-                <summary>View the full Lite source code</summary>
-<pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Tom The Ai - Lite&lt;/title&gt;
-    &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
-    &lt;style&gt;
-        body { background: #000; color: #00f2ff; font-family: Arial, sans-serif; padding: 20px; }
-        #chat { border: 1px solid #333; height: 300px; overflow-y: scroll; padding: 10px; margin-bottom: 10px; }
-        .msg { margin-bottom: 10px; padding: 10px; border-radius: 5px; word-wrap: break-word; }
-        .user { color: #fff; background: #222; }
-        .ai { color: #00f2ff; background: #111; }
-        .error { color: #ff4444; background: #220000; border: 1px solid #ff4444; }
-        input { width: 70%; padding: 10px; background: #111; color: #fff; border: 1px solid #00f2ff; font-size: 16px; }
-        button { padding: 10px; background: #00f2ff; color: #000; border: none; font-weight: bold; cursor: pointer; }
-        button:disabled { background: #444; color: #888; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
+            <h3><i class="fas fa-code"></i> Tom The AI Lite — public API</h3>
+            <p class="api-intro">Anyone can use the API. No key, no sign-up, no account. Just send a GET request with your prompt and get a JSON response back.</p>
 
-    &lt;h3&gt;Tom The AI Lite&lt;/h3&gt;
-    &lt;div id="chat"&gt;
-        &lt;div class='msg ai'&gt;Tom: Lite Edition&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;input type="text" id="in" placeholder="Ask Tom..."&gt;
-    &lt;button id="btn" onclick="ask()"&gt;Send&lt;/button&gt;
+            <div class="api-doc-row">
+                <div class="api-doc-label"><i class="fas fa-plug"></i> Endpoint</div>
+                <code class="api-endpoint">GET https://tom-the-ai-api.wen471942.workers.dev/</code>
+            </div>
 
-    &lt;script type="text/javascript"&gt;
-        var chat = document.getElementById('chat');
-        var input = document.getElementById('in');
-        var btn = document.getElementById('btn');
+            <div class="api-doc-row">
+                <div class="api-doc-label"><i class="fas fa-list-ul"></i> Parameters</div>
+                <table class="api-params">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>prompt</code></td>
+                            <td>string</td>
+                            <td>Yes</td>
+                            <td>The text you want Tom to respond to. URL-encode it (spaces become <code>%20</code>).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        var WORKER_URL = "https://tom-the-ai-api.wen471942.workers.dev/";
+            <div class="api-doc-row">
+                <div class="api-doc-label"><i class="fas fa-reply"></i> Response format</div>
+                <p class="api-response">Success — <code>{ "status": "ok", "response": "..." }</code></p>
+                <p class="api-response">Error — <code>{ "status": "error", "message": "..." }</code></p>
+            </div>
 
-        function ask() {
-            var val = input.value;
+            <div class="api-doc-row">
+                <div class="api-doc-label"><i class="fas fa-terminal"></i> Example code</div>
 
-            val = val ? val.replace(/^\s+|\s+$/g, '') : '';
-            if(!val) return;
+                <details open>
+                    <summary>JavaScript — fetch (browser or Node 18+)</summary>
+<pre>fetch("https://tom-the-ai-api.wen471942.workers.dev/?prompt=" + encodeURIComponent("Hello Tom"))
+  .then(res =&gt; res.json())
+  .then(data =&gt; {
+    if (data.status === "ok") {
+      console.log(data.response);
+    } else {
+      console.error("API error:", data.message);
+    }
+  })
+  .catch(err =&gt; console.error("Request failed:", err));</pre>
+                </details>
 
-            chat.innerHTML += "&lt;div class='msg user'&gt;Me: " + val + "&lt;/div&gt;";
-            input.value = "";
-            btn.disabled = true;
+                <details>
+                    <summary>JavaScript — async / await</summary>
+<pre>async function askTom(prompt) {
+  const url = "https://tom-the-ai-api.wen471942.workers.dev/?prompt="
+            + encodeURIComponent(prompt);
 
-            if (chat.scrollHeight) { chat.scrollTop = chat.scrollHeight; }
+  const res  = await fetch(url);
+  const data = await res.json();
 
-            var xhr;
-            if (window.XMLHttpRequest) {
-                xhr = new XMLHttpRequest();
-            } else {
-                try {
-                    xhr = new ActiveXObject("Msxml2.XMLHTTP");
-                } catch(e) {
-                    try { xhr = new ActiveXObject("Microsoft.XMLHTTP"); } catch(e2) {
-                        chat.innerHTML += "&lt;div class='msg error'&gt;Error: This device does not support web requests.&lt;/div&gt;";
-                        btn.disabled = false;
-                        return;
-                    }
-                }
-            }
+  if (data.status === "ok") {
+    return data.response;
+  }
+  throw new Error(data.message || "Unknown API error");
+}
 
-            var encoder = window.encodeURIComponent ? encodeURIComponent : escape;
-            xhr.open("GET", WORKER_URL + "?prompt=" + encoder(val), true);
+askTom("What is the meaning of life?")
+  .then(reply =&gt; console.log(reply))
+  .catch(err  =&gt; console.error(err.message));</pre>
+                </details>
 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    btn.disabled = false;
+                <details>
+                    <summary>cURL — terminal / command line</summary>
+<pre>curl "https://tom-the-ai-api.wen471942.workers.dev/?prompt=Hello%20Tom"</pre>
+                </details>
 
-                    if (xhr.status === 200 || xhr.status === 0) {
-                        try {
-                            var data;
+                <details>
+                    <summary>Python — requests</summary>
+<pre>import requests
 
-                            if (window.JSON &amp;&amp; window.JSON.parse) {
-                                data = JSON.parse(xhr.responseText);
-                            } else {
-                                data = eval('(' + xhr.responseText + ')');
-                            }
+r = requests.get(
+    "https://tom-the-ai-api.wen471942.workers.dev/",
+    params={"prompt": "Hello Tom"}
+)
 
-                            if (data &amp;&amp; data.status === "ok") {
-                                chat.innerHTML += "&lt;div class='msg ai'&gt;Tom: " + data.response + "&lt;/div&gt;";
-                            } else {
-                                var msg = data &amp;&amp; data.message ? data.message : "Unknown API Error";
-                                chat.innerHTML += "&lt;div class='msg error'&gt;Error: " + msg + "&lt;/div&gt;";
-                            }
-                        } catch (err) {
-                            chat.innerHTML += "&lt;div class='msg error'&gt;Data Error: Unable to read response.&lt;/div&gt;";
-                        }
-                    } else {
-                        chat.innerHTML += "&lt;div class='msg error'&gt;Connection Failed: Status " + xhr.status + ". This is likely a TLS/SSL security block on this device.&lt;/div&gt;";
-                    }
+data = r.json()
 
-                    if (chat.scrollHeight) { chat.scrollTop = chat.scrollHeight; }
-                }
-            };
+if data.get("status") == "ok":
+    print(data["response"])
+else:
+    print("Error:", data.get("message"))</pre>
+                </details>
 
-            xhr.onerror = function() {
-                btn.disabled = false;
-                chat.innerHTML += "&lt;div class='msg error'&gt;Network Error: Connection refused by device security.&lt;/div&gt;";
-            };
+                <details>
+                    <summary>Inline HTML — drop-in chat widget</summary>
+<pre>&lt;script&gt;
+  function askTom() {
+    var q = document.getElementById("q").value;
+    fetch("https://tom-the-ai-api.wen471942.workers.dev/?prompt=" + encodeURIComponent(q))
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        document.getElementById("out").textContent = d.response;
+      });
+  }
+&lt;/script&gt;
 
-            xhr.send(null);
-        }
+&lt;input id="q" placeholder="Ask Tom..."&gt;
+&lt;button onclick="askTom()"&gt;Send&lt;/button&gt;
+&lt;div id="out"&gt;&lt;/div&gt;</pre>
+                </details>
 
-        input.onkeypress = function(e) {
-            var charCode = (e &amp;&amp; e.which) ? e.which : (window.event ? window.event.keyCode : 0);
-            if(charCode == 13) { ask(); return false; }
-        };
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-            </details>
+                <details>
+                    <summary>Example JSON response</summary>
+<pre>{
+  "status": "ok",
+  "response": "Hello! I am Tom, the Lite edition. How can I help you today?"
+}</pre>
+                </details>
+            </div>
+
+            <div class="api-doc-row">
+                <div class="api-doc-label"><i class="fas fa-circle-info"></i> Notes for developers</div>
+                <ul class="feature-list-compact" style="margin-bottom: 0;">
+                    <li><i class="fas fa-check-circle"></i> No authentication required — the API is open to everyone.</li>
+                    <li><i class="fas fa-check-circle"></i> CORS is enabled, so you can call it directly from any web page.</li>
+                    <li><i class="fas fa-check-circle"></i> Always URL-encode your prompt (use <code>encodeURIComponent</code> or similar).</li>
+                    <li><i class="fas fa-check-circle"></i> The endpoint returns JSON. Check <code>status</code> before reading <code>response</code>.</li>
+                    <li><i class="fas fa-check-circle"></i> Be kind — don't hammer the worker with automated floods.</li>
+                    <li><i class="fas fa-check-circle"></i> 100% free, no hidden costs, no tracking.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
